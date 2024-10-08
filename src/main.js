@@ -56,6 +56,17 @@ const rainMaterial = new THREE.PointsMaterial({
 const rain = new THREE.Points(rainGeometry, rainMaterial);
 scene.add(rain);
 
+//sounds
+const rainSound = new Audio("/sounds/rain1.mp3"); // 소리 파일 경로
+rainSound.loop = true; // 반복 재생 설정
+rainSound.volume = 0.5; // 소리 볼륨 조절
+
+const playRainSound = () => {
+  rainSound.play().catch((error) => {
+    console.error("비 소리 재생 중 오류 발생:", error);
+  });
+};
+
 const draw = () => {
   const positions = rainGeometry.attributes.position.array;
 
@@ -68,10 +79,16 @@ const draw = () => {
       positions[i * 3 + 2] = (Math.random() - 0.5) * rainAreaDepth;
     }
   }
+
   rainGeometry.attributes.position.needsUpdate = true;
 
   renderer.render(scene, camera);
   renderer.setAnimationLoop(draw);
 };
+
+const startButton = document.querySelector(".start-button");
+startButton.addEventListener("click", () => {
+  playRainSound();
+});
 
 draw();

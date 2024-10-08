@@ -5,8 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Cafe</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      .webgl {
+        display: block;
+      }
+      .start-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    </style>
   </head>
   <body>
+    <button class="start-button">Start Rain Sound</button>
     <canvas class="webgl"></canvas>
     <script type="module" src="./main.js"></script>
   </body>
